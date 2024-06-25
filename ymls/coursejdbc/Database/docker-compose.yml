@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: coursejdbc_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: coursejdbc@12345
+      MYSQL_DATABASE: coursejdbc
+    ports:
+      - "3306:3306"
+    volumes:
+    - mysql-data:/var/lib/mysql
+    - ./sql-scripts/:/docker-entrypoint-initdb.d/
+volumes:
+  mysql-data:
